@@ -1,0 +1,15 @@
+C:\Users\raeym\Github Repositories\coding_assessment\bin\Debug\net7.0\coding_assessment.exe
+C:\Users\raeym\Github Repositories\coding_assessment\bin\Debug\net7.0\coding_assessment.deps.json
+C:\Users\raeym\Github Repositories\coding_assessment\bin\Debug\net7.0\coding_assessment.runtimeconfig.json
+C:\Users\raeym\Github Repositories\coding_assessment\bin\Debug\net7.0\coding_assessment.dll
+C:\Users\raeym\Github Repositories\coding_assessment\bin\Debug\net7.0\coding_assessment.pdb
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.csproj.AssemblyReference.cache
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.AssemblyInfoInputs.cache
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.AssemblyInfo.cs
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.csproj.CoreCompileInputs.cache
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.dll
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\refint\coding_assessment.dll
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.pdb
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.genruntimeconfig.cache
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\ref\coding_assessment.dll
