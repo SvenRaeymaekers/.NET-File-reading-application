@@ -13,3 +13,5 @@ C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\refint\cod
 C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.pdb
 C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.genruntimeconfig.cache
 C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\ref\coding_assessment.dll
+C:\Users\raeym\Github Repositories\coding_assessment\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\raeym\Github Repositories\coding_assessment\obj\Debug\net7.0\coding_assessment.csproj.CopyComplete

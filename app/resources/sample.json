@@ -1,0 +1,39 @@
+{
+	"random": "43",
+	"random float": "83.182",
+	"bool": "true",
+	"date": "1986-12-01",
+	"regEx": "helloooooooooooooooooooooooooooooooooooooo to you",
+	"enum": "generator",
+	"firstname": "Donnie",
+	"lastname": "Friede",
+	"city": "Santiago de Cuba",
+	"country": "Mauritius",
+	"countryCode": "TH",
+	"email uses current data": "Donnie.Friede@gmail.com",
+	"email from expression": "Donnie.Friede@yopmail.com",
+	"array": [
+		"Lindie",
+		"Jere",
+		"Gwenneth",
+		"Diena",
+		"Tina"
+	],
+	"array of objects": [
+		{
+			"index": "0",
+			"index start at 5": "5"
+		},
+		{
+			"index": "1",
+			"index start at 5": "6"
+		},
+		{
+			"index": "2",
+			"index start at 5": "7"
+		}
+	],
+	"Alie": {
+		"age": "86"
+	}
+}
