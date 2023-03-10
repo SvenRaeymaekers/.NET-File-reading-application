@@ -1,5 +1,5 @@
 
-
+using System.Text;
 
 using System.Xml;
 
@@ -8,32 +8,36 @@ public class XmlFileReader : AbstractFileReader
 
 
     //printing functionality has to be improved, nice structure necessary.
-    public override void ReadFile(string filePath)
+    public override string ReadFile(string filePath)
     {
+        StringBuilder fileContent = new StringBuilder();
         XmlDocument doc = new XmlDocument();
         doc.Load(filePath);
 
 
         XmlNode root = doc.DocumentElement;
 
+        
         Console.WriteLine(root.Name);
 
-        PrintXMLNodes(root.ChildNodes);
+        PrintXMLNodes(root.ChildNodes,fileContent);
+        return fileContent.ToString();
     }
-    private void PrintXMLNodes(XmlNodeList nodes)
+    private string PrintXMLNodes(XmlNodeList nodes, StringBuilder fileContent)
     {
         foreach (XmlNode node in nodes)
         {
             if (node.HasChildNodes)
             {
-                Console.WriteLine(node.Name);
+                fileContent.AppendLine(node.Name);
                 
-                PrintXMLNodes(node.ChildNodes);
+                PrintXMLNodes(node.ChildNodes,fileContent);
             }
             else
             {
-                Console.WriteLine("{0}: {1}", node.ParentNode.Name, node.InnerText);
+                fileContent.AppendLine(node.ParentNode.Name.ToString() + ": " + node.InnerText.ToString());
             }
         }
+        return fileContent.ToString();
     }
 }

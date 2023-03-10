@@ -1,25 +1,27 @@
-
+using System.Text;
 
 public class TxtFileReader : AbstractFileReader
 {
 
 
-    public override void ReadFile(string filePath)
+    public override string ReadFile(string filePath)
     {
         string input_line;
+        StringBuilder fileContent = new StringBuilder();
         try
         {
 
             StreamReader sr = new StreamReader(filePath);
             input_line = sr.ReadLine();
-            Console.WriteLine("Reading your text file now:\n");
+
             while (input_line != null)
             {
-                
-                Console.WriteLine(input_line);
+
+                fileContent.AppendLine(input_line);
                 input_line = sr.ReadLine();
             }
             Console.WriteLine("\n");
+
             sr.Close();
         }
         catch (Exception e)
@@ -31,7 +33,7 @@ public class TxtFileReader : AbstractFileReader
         {
 
         }
-        Console.WriteLine("Text file has been read.");
+        return fileContent.ToString();
     }
 
 }

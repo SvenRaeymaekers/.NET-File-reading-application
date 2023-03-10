@@ -3,7 +3,7 @@
 public abstract class AbstractFileReader : IFileReader
 {
 
-    public abstract void ReadFile(string filePath);
+    public abstract string ReadFile(string filePath);
 
     
 }

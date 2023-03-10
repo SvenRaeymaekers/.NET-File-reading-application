@@ -3,16 +3,18 @@ using Newtonsoft;
 public class JsonFileReader : AbstractFileReader
 {
 
-    public override void ReadFile(string filePath)
+    public override string ReadFile(string filePath)
     {
+        string fileContent = "";
         try
         {
 
             StreamReader sr = new StreamReader(filePath);
             string json = sr.ReadToEnd();
             dynamic jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
-            Console.WriteLine(jsonObject);
+            fileContent = jsonObject;
             sr.Close();
+            
         }
         catch (Exception e)
         {
@@ -23,6 +25,7 @@ public class JsonFileReader : AbstractFileReader
         {
 
         }
-        Console.WriteLine("Json file has been read.");
+        return fileContent;
+
     }
 }

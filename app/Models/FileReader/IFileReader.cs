@@ -1,6 +1,6 @@
 
 public interface IFileReader
 {
-    void ReadFile(string filePath);
+    string ReadFile(string filePath);
     
 }
