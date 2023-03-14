@@ -1,31 +1,29 @@
 using Newtonsoft;
+using Newtonsoft.Json.Linq;
 
 public class JsonFileReader : AbstractFileReader
 {
 
-    public override string ReadFile(string filePath)
+    public override string ReadFile(string filePath, bool isFileEncrypted, FileDataDecryptor fileDataDecryptor)
     {
         string fileContent = "";
         try
         {
-
-            StreamReader sr = new StreamReader(filePath);
-            string json = sr.ReadToEnd();
-            dynamic jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
-            fileContent = jsonObject;
-            sr.Close();
-            
+            string json = File.ReadAllText(filePath);
+            if (isFileEncrypted)
+            {
+                json = fileDataDecryptor.DecryptContent(json);
+            }
+            JObject jsonObject = JObject.Parse(json);
+            fileContent = jsonObject.ToString();
         }
         catch (Exception e)
         {
-            Console.WriteLine("Something went wrong while trying to " +
-            "read your file with the following message: " + e.Message);
-        }
-        finally
-        {
-
+            Console.WriteLine("Something went wrong while reading your json-file:" + e.Message);
         }
         return fileContent;
 
     }
+
+
 }

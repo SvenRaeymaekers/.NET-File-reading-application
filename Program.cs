@@ -1,25 +1,47 @@
 ﻿using System.IO;
 
-String filePath;
-String IsEncrypted;
-
-Console.WriteLine("Please provide the path name of the file you would like to read.\n");
-// filePath = Console.ReadLine();
-filePath = "app/resources/sample.txt";
-Console.WriteLine("Is your File Encrypted?\n");
-IsEncrypted = "Yes";
+CLIHelperClass helper = new CLIHelperClass();
 
 
+startFileReadingApplication(helper);
 
-FileReaderFactory fileReaderFactory = new FileReaderFactory();
-IFileReader fileReader = fileReaderFactory.CreateFileReader(filePath);
-string fileContent = fileReader.ReadFile(filePath);
+string[] allowedFileTypes = { "txt", "xml", "json" };
 
-if(IsEncrypted == "Yes"){
-    IDecryptionStrategy reverseStringDecryptionStrategy = new ReverseStringStrategy();
-    ContentDecryptor contentDecryptor = new ContentDecryptor(reverseStringDecryptionStrategy);
-    fileContent = contentDecryptor.DecryptContent(fileContent);
+static void startFileReadingApplication(CLIHelperClass helper)
+{
+    bool isUserReadingAnotherFile = true;
+    FileController fileController = new FileController();
+    //simulating that the user inputs the type of encryption, because model is built like this, for extension possiblities reasons.
+
+
+    while (isUserReadingAnotherFile)
+    {
+        try
+        {
+            
+            string filePath = helper.GetFilePathFromUser();
+            string fileType = helper.GetFileTypeFromUser();
+            bool isFileEncrypted = helper.IsFileEncrypted();
+            // role based auth input
+            string fileContent = fileController.ProcessFile(filePath, fileType, isFileEncrypted);
+            Console.WriteLine(fileContent);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("An error occurred while reading your file: " + e.Message);
+
+        }
+        finally
+        {
+            Console.WriteLine("Would you like to read another file? Please answer with \"Yes\" or \"No\" \n");
+            string isUserReadingAnotherFileString = Console.ReadLine();
+            //check and enforce correct user input
+            isUserReadingAnotherFileString = helper.ReturnYesOrNoAnswerFromUser(isUserReadingAnotherFileString);
+            isUserReadingAnotherFile = isUserReadingAnotherFileString.Equals("yes") ? true : false;
+        }
+    }
+    //exit the program
+    Console.WriteLine("Thank you for using the file reader application!");
+    
 }
-
-Console.WriteLine(fileContent);
 

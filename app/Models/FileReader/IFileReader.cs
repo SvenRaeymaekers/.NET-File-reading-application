@@ -1,6 +1,7 @@
 
 public interface IFileReader
 {
-    string ReadFile(string filePath);
+    string ReadFile(string filePath, bool isFileEncrypted, FileDataDecryptor fileDataDecryptor);
+
     
 }

@@ -1,5 +1,5 @@
 using System.Text;
-public class ReverseStringDecryptionStrategy : IDecryptionStrategy
+public class Base64DecryptionStrategy : IDecryptionStrategy
 {
 
 
@@ -10,9 +10,11 @@ public class ReverseStringDecryptionStrategy : IDecryptionStrategy
         //e.g. A json file that is encrypted with this type of algorithm, does not return a 'valid' json file.
         //with this assumption, all files that are being decrypted with this algorithm can be read as .txt files.
         
-        char[] charArray = dataContent.ToCharArray();
-        Array.Reverse(charArray);
-        return new string(charArray);
+        
+        byte[] decryptedBytes = Convert.FromBase64String(dataContent);
+        string decryptedString = Encoding.UTF8.GetString(decryptedBytes);
+
+        return decryptedString;
 
     }
 }

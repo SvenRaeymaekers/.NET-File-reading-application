@@ -2724,11 +2724,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\raeym\\Github Repositories\\coding_assessment\\coding_assessment.csproj",
+      "projectUniqueName": "c:\\Users\\raeym\\Github Repositories\\coding_assessment\\coding_assessment.csproj",
       "projectName": "coding_assessment",
-      "projectPath": "C:\\Users\\raeym\\Github Repositories\\coding_assessment\\coding_assessment.csproj",
+      "projectPath": "c:\\Users\\raeym\\Github Repositories\\coding_assessment\\coding_assessment.csproj",
       "packagesPath": "C:\\Users\\raeym\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\raeym\\Github Repositories\\coding_assessment\\obj\\",
+      "outputPath": "c:\\Users\\raeym\\Github Repositories\\coding_assessment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\raeym\\AppData\\Roaming\\NuGet\\NuGet.Config",

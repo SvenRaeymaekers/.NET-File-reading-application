@@ -8,36 +8,36 @@ public class XmlFileReader : AbstractFileReader
 
 
     //printing functionality has to be improved, nice structure necessary.
-    public override string ReadFile(string filePath)
+    public override string ReadFile(string filePath, bool isFileEncrypted, FileDataDecryptor fileDataDecryptor)
     {
-        StringBuilder fileContent = new StringBuilder();
+
+        string xmlString = File.ReadAllText(filePath);
+        if (isFileEncrypted)
+        {
+            xmlString = fileDataDecryptor.DecryptContent(xmlString);
+        }
+    
         XmlDocument doc = new XmlDocument();
-        doc.Load(filePath);
-
-
+        doc.LoadXml(xmlString);
         XmlNode root = doc.DocumentElement;
-
-        
         Console.WriteLine(root.Name);
-
-        PrintXMLNodes(root.ChildNodes,fileContent);
+        StringBuilder fileContent = new StringBuilder();
+        retrieveXMLContent(root.ChildNodes, fileContent);
         return fileContent.ToString();
     }
-    private string PrintXMLNodes(XmlNodeList nodes, StringBuilder fileContent)
+    private void retrieveXMLContent(XmlNodeList nodes, StringBuilder fileContent)
     {
         foreach (XmlNode node in nodes)
         {
+            fileContent.AppendLine(node.ParentNode.Name.ToString() + ": " + node.InnerText.ToString());
+
             if (node.HasChildNodes)
             {
                 fileContent.AppendLine(node.Name);
-                
-                PrintXMLNodes(node.ChildNodes,fileContent);
+
+                retrieveXMLContent(node.ChildNodes, fileContent);
             }
-            else
-            {
-                fileContent.AppendLine(node.ParentNode.Name.ToString() + ": " + node.InnerText.ToString());
-            }
+           
         }
-        return fileContent.ToString();
     }
 }

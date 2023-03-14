@@ -3,17 +3,9 @@ public class FileReaderFactory
 {
 
 
-    public IFileReader CreateFileReader(string filePath)
+    public IFileReader CreateFileReader(string fileType)
     {
 
-        //check if the file exists
-        if (!File.Exists(filePath))
-        {
-            throw new FileNotFoundException("The file path you provided does not exist.", filePath);
-        }
-
-
-        string fileType = Path.GetExtension(filePath).Substring(1).ToLower();
         switch (fileType)
         {
             case "txt":
@@ -23,9 +15,9 @@ public class FileReaderFactory
             case "json":
                 return new JsonFileReader();
             default:
+                //checking whether the file type is currently supported is already implemented in controller
+                // but let's assume this acts like a double-check
                 throw new ArgumentException($"Reading files of type {fileType} is currently not supported.");
         }
     }
-
-
 }
