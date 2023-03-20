@@ -1,10 +1,11 @@
 using System;
-
+using System.Xml;
+using System.Collections.Generic;
 
 
 public class FileController
 {
-
+    private static string userRolesAuthorizationFilePath = "/config/.security.xml";
     private readonly FileReaderFactory _fileReaderFactory;
     private string[] _allowedFileTypes = { "txt", "xml", "json" };
 
@@ -12,6 +13,7 @@ public class FileController
     public FileController()
     {
         this._fileReaderFactory = new FileReaderFactory();
+        this._roleBasedAuthorization = 
     }
 
     public string ProcessFile(string filePath, string fileType, bool isFileEncrypted)
@@ -28,7 +30,8 @@ public class FileController
             throw new ArgumentException("The file type you provided is not supported at this moment.", fileType);
         }
 
-        // then, check if user is allowed to read the file, so inject the model of 
+        //check if user is allowed to read the file
+        
 
 
         IFileReader fileReader = _fileReaderFactory.CreateFileReader(fileType);
@@ -43,4 +46,41 @@ public class FileController
 
         return fileContent;
     }
+
+
+    public Dictionary<string, string[]> readUserRolesFromXML(){
+
+
+        Dictionary<string, string[]> roles = new Dictionary<string, string[]>();
+
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(userRolesAuthorizationFilePath);
+        
+
+        //get all roles nodes within the file
+        XmlNodeList nodes = xmlDoc.GetElementsByTagName("role");
+
+        foreach (XmlNode role in nodes){
+
+            // get value of name attribute from role and store as string roleName
+
+            foreach (XmlDocument allowdFileTypeNode in role.SelectSingleNode("allowedFiles")){
+                //string allowedRoleFileTypes
+                //foreach fileType value in the allowdFileTypeNode, append to array
+                // store in dictionairy for roleName
+            }
+    
+        }
+
+
+        return roles;
+
+
+
+
+    }
+
+
+
+
 }

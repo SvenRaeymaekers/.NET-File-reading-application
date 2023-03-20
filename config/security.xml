@@ -1,0 +1,14 @@
+<security>
+    <role name="admin">
+      <allowedFiles>
+        <fileType>txt</fileType>
+        <fileType>xml</fileType>
+        <fileType>json</fileType>
+      </allowedFiles>
+    </role>
+    <role name="user">
+      <allowedFiles>
+        <fileType>txt</fileType>
+      </allowedFiles>
+    </role>
+  </security>

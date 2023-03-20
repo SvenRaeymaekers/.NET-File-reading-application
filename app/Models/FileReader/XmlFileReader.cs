@@ -7,7 +7,7 @@ public class XmlFileReader : AbstractFileReader
 {
 
 
-    //printing functionality has to be improved, nice structure necessary.
+    //printing functionality has to be improved
     public override string ReadFile(string filePath, bool isFileEncrypted, FileDataDecryptor fileDataDecryptor)
     {
 

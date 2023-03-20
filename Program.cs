@@ -11,8 +11,6 @@ static void startFileReadingApplication(CLIHelperClass helper)
 {
     bool isUserReadingAnotherFile = true;
     FileController fileController = new FileController();
-    //simulating that the user inputs the type of encryption, because model is built like this, for extension possiblities reasons.
-
 
     while (isUserReadingAnotherFile)
     {
@@ -22,7 +20,7 @@ static void startFileReadingApplication(CLIHelperClass helper)
             string filePath = helper.GetFilePathFromUser();
             string fileType = helper.GetFileTypeFromUser();
             bool isFileEncrypted = helper.IsFileEncrypted();
-            // role based auth input
+            // role based auth input: what role are you. 
             string fileContent = fileController.ProcessFile(filePath, fileType, isFileEncrypted);
             Console.WriteLine(fileContent);
         }
