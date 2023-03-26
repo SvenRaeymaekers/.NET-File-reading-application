@@ -6,24 +6,27 @@ public class JsonFileReader : AbstractFileReader
 
     public override string ReadFile(string filePath, bool isFileEncrypted, FileDataDecryptor fileDataDecryptor)
     {
-        string fileContent = "";
+
         try
         {
-            string json = File.ReadAllText(filePath);
+
+            string fileContent = File.ReadAllText(filePath);
+
+            //decryption logic 
             if (isFileEncrypted)
             {
-                json = fileDataDecryptor.DecryptContent(json);
+                fileContent = fileDataDecryptor.DecryptContent(fileContent);
             }
-            JObject jsonObject = JObject.Parse(json);
+
+            JObject jsonObject = JObject.Parse(fileContent);
             fileContent = jsonObject.ToString();
+            return fileContent;
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Console.WriteLine("Something went wrong while reading your json-file:" + e.Message);
+            throw new Exception("Something went wrong while reading your JSON-file.");
         }
-        return fileContent;
 
     }
-
 
 }

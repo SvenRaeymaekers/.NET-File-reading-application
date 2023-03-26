@@ -16,11 +16,11 @@ static void startFileReadingApplication(CLIHelperClass helper)
         {
 
             string filePath = helper.GetFilePathFromUser();
-            //if the file is encrypted, the file path does not include the file extension, since a e.g. base64 encrypted file
-            // is stored as a .txt file. For that reason, the file type is required as input:
+            //encrypted files might have different file extensions: e.g. base64 encryption results in .txt files. 
+            //Therefor, initial type file is required as input.
             string fileType = helper.GetFileTypeFromUser();
             bool isFileEncrypted = helper.IsFileEncrypted();
-            
+
             string fileContent = fileController.ProcessFile(filePath, fileType, isFileEncrypted, userRole);
             Console.WriteLine(fileContent);
         }
@@ -32,7 +32,7 @@ static void startFileReadingApplication(CLIHelperClass helper)
         finally
         {
             Console.WriteLine("Would you like to read another file? Please answer with \"Yes\" or \"No\" \n");
-            string isUserReadingAnotherFileString = Console.ReadLine();
+            string isUserReadingAnotherFileString = Console.ReadLine().ToLower();
             //check and enforce correct user input
             isUserReadingAnotherFileString = helper.ReturnYesOrNoAnswerFromUser(isUserReadingAnotherFileString);
             isUserReadingAnotherFile = isUserReadingAnotherFileString.Equals("yes") ? true : false;

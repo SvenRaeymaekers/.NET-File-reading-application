@@ -1,43 +1,34 @@
 
 using System.Text;
 
-using System.Xml;
+using System.Xml.Linq;
 
 public class XmlFileReader : AbstractFileReader
 {
 
 
-    //printing functionality has to be improved
+
     public override string ReadFile(string filePath, bool isFileEncrypted, FileDataDecryptor fileDataDecryptor)
     {
 
-        string xmlString = File.ReadAllText(filePath);
-        if (isFileEncrypted)
+        try
         {
-            xmlString = fileDataDecryptor.DecryptContent(xmlString);
-        }
-    
-        XmlDocument doc = new XmlDocument();
-        doc.LoadXml(xmlString);
-        XmlNode root = doc.DocumentElement;
-        Console.WriteLine(root.Name);
-        StringBuilder fileContent = new StringBuilder();
-        retrieveXMLContent(root.ChildNodes, fileContent);
-        return fileContent.ToString();
-    }
-    private void retrieveXMLContent(XmlNodeList nodes, StringBuilder fileContent)
-    {
-        foreach (XmlNode node in nodes)
-        {
-            fileContent.AppendLine(node.ParentNode.Name.ToString() + ": " + node.InnerText.ToString());
 
-            if (node.HasChildNodes)
+            string xmlString = File.ReadAllText(filePath);
+            if (isFileEncrypted)
             {
-                fileContent.AppendLine(node.Name);
-
-                retrieveXMLContent(node.ChildNodes, fileContent);
+                xmlString = fileDataDecryptor.DecryptContent(xmlString);
             }
-           
+
+            //simple reading of xml file. if required, more advanced functionality can be coded here. (e.g. looping over XMLNodes)
+
+            XDocument doc = XDocument.Parse(xmlString);
+            return doc.ToString();
+        }
+        catch (Exception)
+        {
+            throw new Exception("Something went wrong while reading your XML-file.");
         }
     }
+
 }

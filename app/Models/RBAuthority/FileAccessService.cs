@@ -5,7 +5,7 @@ public class FileAccessService
 {
 
     
-
+    // dictionary that keeps role and it's corresponding allowed file types that the role can read. the config/security.xml file is saved in this dict.
     private Dictionary<string, List<string>> _allowedFilesByRole;
 
     public FileAccessService(string allowedFilesByRoleFilePath)
@@ -30,10 +30,12 @@ public class FileAccessService
     private Dictionary<string, List<string>> readUserRolesFromXML(string allowedFilesByRoleFilePath)
     {
         
-
+        // important remark: the parameter allowedFilesByRoleFilePath is a relative path, which has been set in the FileController. Changing the relative path to an absolute will cause fileNotFound
+        
+        //construct absolute path
         string currentDirectory = Directory.GetCurrentDirectory();
-        //string allowedFilesByRolePathAbsolute = Path.Combine(currentDirectory, allowedFilesByRoleFilePath);
         string allowedFilesByRolePathAbsolute = currentDirectory + allowedFilesByRoleFilePath;
+
         Dictionary<string, List<string>> allowedFilesByRole = new Dictionary<string, List<string>>();
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(allowedFilesByRolePathAbsolute);

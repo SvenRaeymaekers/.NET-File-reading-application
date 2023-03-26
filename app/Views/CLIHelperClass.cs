@@ -12,14 +12,14 @@ public class CLIHelperClass
     public string GetFileTypeFromUser()
     {
         Console.WriteLine("Please provide the file type of the file you would like to read.\n");
-        string fileType = Console.ReadLine();
+        string fileType = Console.ReadLine().ToLower().Replace(".","");
         return fileType;
     }
 
     public bool IsFileEncrypted()
     {
 
-        Console.WriteLine("Is your File Encrypted? Please reply with \"Yes\" or \"No\" \n");
+        Console.WriteLine("Is your File Encrypted? Please reply with \"Yes\" or \"No\". \n");
         string isEncryptedString = Console.ReadLine().ToLower();
         isEncryptedString = ReturnYesOrNoAnswerFromUser(isEncryptedString);
 
@@ -28,7 +28,7 @@ public class CLIHelperClass
 
     public string GetUserRole()
     {
-        Console.WriteLine("What role do you have? Please reply with \"Admin\" or \"User\" \n.");
+        Console.WriteLine("What role do you have? Please reply with \"Admin\" or \"User\". \n");
         string userRole = Console.ReadLine().ToLower();
         while ((!userRole.Equals("admin")) && (!userRole.Equals("user")))
         {

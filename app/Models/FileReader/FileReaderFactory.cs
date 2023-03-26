@@ -2,14 +2,17 @@
 public class FileReaderFactory
 {
 
-    public IFileReader CreateJsonFileReader(){
+    public IFileReader CreateJsonFileReader()
+    {
         return new JsonFileReader();
     }
-     public IFileReader CreateTxtFileReader(){
+    public IFileReader CreateTxtFileReader()
+    {
         return new TxtFileReader();
     }
-     public IFileReader CreateXmlFileReader(){
+    public IFileReader CreateXmlFileReader()
+    {
         return new XmlFileReader();
     }
-    
+
 }

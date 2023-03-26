@@ -1,8 +1,6 @@
 
-
 public class FileDataDecryptor
 {
-
 
     private IDecryptionStrategy _decryptionStrategy;
 

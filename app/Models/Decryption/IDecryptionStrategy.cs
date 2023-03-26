@@ -1,4 +1,5 @@
-public interface IDecryptionStrategy {
+public interface IDecryptionStrategy
+{
 
     string Decrypt(string filePath);
 
