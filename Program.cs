@@ -2,26 +2,26 @@
 
 CLIHelperClass helper = new CLIHelperClass();
 
-
 startFileReadingApplication(helper);
-
-string[] allowedFileTypes = { "txt", "xml", "json" };
 
 static void startFileReadingApplication(CLIHelperClass helper)
 {
     bool isUserReadingAnotherFile = true;
     FileController fileController = new FileController();
 
+    string userRole = helper.GetUserRole();
     while (isUserReadingAnotherFile)
     {
         try
         {
-            
+
             string filePath = helper.GetFilePathFromUser();
+            //if the file is encrypted, the file path does not include the file extension, since a e.g. base64 encrypted file
+            // is stored as a .txt file. For that reason, the file type is required as input:
             string fileType = helper.GetFileTypeFromUser();
             bool isFileEncrypted = helper.IsFileEncrypted();
-            // role based auth input: what role are you. 
-            string fileContent = fileController.ProcessFile(filePath, fileType, isFileEncrypted);
+            
+            string fileContent = fileController.ProcessFile(filePath, fileType, isFileEncrypted, userRole);
             Console.WriteLine(fileContent);
         }
         catch (Exception e)
@@ -40,6 +40,6 @@ static void startFileReadingApplication(CLIHelperClass helper)
     }
     //exit the program
     Console.WriteLine("Thank you for using the file reader application!");
-    
+
 }
 

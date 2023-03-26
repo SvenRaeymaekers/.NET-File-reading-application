@@ -16,5 +16,4 @@ public class FileDataDecryptor
         return this._decryptionStrategy.Decrypt(encryptedContent);
     }
 
-
 }
